@@ -23,6 +23,9 @@ module.exports = function (app) {
 	})
 
 	let Book = mongoose.model('book', bookSchema)
+  
+  const ObjectId = require('mongoose').Types.ObjectId
+
 
   app.route('/api/books')
     .get(function (req, res){
@@ -55,7 +58,7 @@ module.exports = function (app) {
 			})
 			newBook.save((error, savedBook) => {
 				if(!error && savedBook){
-					res.json(savedBook)
+					res.send(savedBook)
 				}
 			})
     })
@@ -127,3 +130,5 @@ module.exports = function (app) {
     });
   
 };
+
+
